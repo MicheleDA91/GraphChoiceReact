@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import logo from './logo.svg';
 import BarChart from './components/Bar';
 import LineChart from './components/Line';
 import DoughnutChart from './components/Doughnut';
@@ -16,13 +17,6 @@ class App extends Component {
 
   handleChange = (event) =>
     this.setState({ value: event.target.value });
-
-
-
-
-  mostraGrafico = () => {
-    return <BarChart />
-  }
 
 
   render() {
@@ -42,6 +36,10 @@ class App extends Component {
       }
 
     return (
+      <div className='App'>
+        <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        </header>
           <div>
         <select value={this.state.value} onChange={this.handleChange}>
           <option value="torta">Grafico a torta</option>
@@ -51,7 +49,7 @@ class App extends Component {
         </select>
         {grafico}
       </div>
-
+      </div>
 
     );
   }
