@@ -1,50 +1,61 @@
-import React, { Component} from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 import BarChart from './components/Bar';
 import LineChart from './components/Line';
 import DoughnutChart from './components/Doughnut';
 import RadarChart from './components/Radar';
-import {Bootstrap, Container, Grid, Row, Col} from 'react-bootstrap' ; 
-import { Bar } from 'react-chartjs-2';
+
 
 
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: 'BarChart'};
+    this.state = { value: false };
   }
-  
+
   handleChange = (event) =>
-    this.setState({value: event.target.value});
-  
-  handleSubmit = (event) => {
-    alert( this.state.value);
-    event.preventDefault();
-  }
+    this.setState({ value: event.target.value });
+
+
+
 
   mostraGrafico = () => {
     return <BarChart />
   }
-  
+
 
   render() {
-        return (
-        <form onSubmit={this.handleSubmit}>
-        <label>
-          Pick your favorite flavor:
-          <select value={this.state.value} onChange={this.handleChange}>
-            <option value="grapefruit"></option>
-            <option value="lime">Lime</option>
-            <option value="barre"> Grafico a barre</option>
-            <option value="mango">Mango</option>
-          </select>
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+    const value = this.state.value
+    let grafico;
+
+    if (value === 'barre') {
+    grafico = (<div className= 'modal'><BarChart /></div>);
+    } else if (value === 'linee') {
+      grafico = (<div className= 'modal'><LineChart /></div>);
+      } else if (value === 'torta') {
+        grafico = (<div className= 'modal'><DoughnutChart /></div>);
+       } else if (value === 'radar') {
+       grafico = (<div className= 'modal'><RadarChart /></div>);
+      }
+       else { grafico = (null);
+      }
+
+    return (
+          <div>
+        <select value={this.state.value} onChange={this.handleChange}>
+          <option value="torta">Grafico a torta</option>
+          <option value="linee">Grafico a Linee</option>
+          <option value="barre">Grafico a barre</option>
+          <option value="radar">Grafico a radar</option>
+        </select>
+        {grafico}
+      </div>
+
+
     );
   }
 }
+
 
 export default App;
