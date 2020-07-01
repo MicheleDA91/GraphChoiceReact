@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Radar } from 'react-chartjs-2';
 
 
-class BarChart extends Component {
+class RadarChart extends Component {
     constructor(props) {
         super(props);
 
@@ -41,7 +41,7 @@ class BarChart extends Component {
  render() {
     return (
         <div className='chart'>
-            <Bar
+            <Radar
                 data={this.state.chartData}
                 option= {{mantainaspectratio: false}}
             />
@@ -50,4 +50,4 @@ class BarChart extends Component {
  }
 }
 
-export default BarChart;
+export default RadarChart;

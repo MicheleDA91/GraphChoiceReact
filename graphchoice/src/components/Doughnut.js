@@ -10,7 +10,7 @@ class DoughnutChart extends Component {
              chartData: {
                 labels: ['Maestro', 'Giuseppe', 'Vincenzo', 'Maham','Michele'],
                 datasets: [{
-                    label: 'Corsetta per Caltagirone',
+                    label: 'Grafico di Prova',
                     data: [
                         99,
                         10,
